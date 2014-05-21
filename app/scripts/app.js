@@ -1,19 +1,22 @@
+/* global app:true */
 'use strict';
 
-angular
+var app = angular
   .module('angNewsApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+    'ngRoute',
+    'firebase'
+  ]);
+app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/posts.html',
+        controller: 'PostsCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .constant('FIREBASE_URL', 'https://radiant-fire-4918.firebaseio.com/');
